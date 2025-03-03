@@ -1,0 +1,38 @@
+<div class="event-form-container">
+  <h3>Agregar evento</h3>
+
+  <div class="event-form-group">
+    <label>Titulo:</label>
+    <input type="text" [(ngModel)]="newEvent.title_event" placeholder="Titulo del evento">
+  </div>
+
+  <div class="event-form-group">
+    <label>Fecha:</label>
+    <input type="date" [(ngModel)]="newEvent.date_event">
+  </div>
+
+  <div class="event-form-group">
+    <label>Ubicación:</label>
+    <input type="text" [(ngModel)]="newEvent.location_event" placeholder="Ubicación del evento">
+  </div>
+
+  <div class="event-form-group">
+    <label>Descripción:</label>
+    <textarea [(ngModel)]="newEvent.description_event" placeholder="Descripción del evento"></textarea>
+  </div>
+
+  <div class="event-form-group">
+    <label>Color:</label>
+    <select [(ngModel)]="newEvent.color">
+      <option value="#4285f4">Blue</option>
+      <option value="#ea4335">Red</option>
+      <option value="#fbbc04">Yellow</option>
+      <option value="#34a853">Green</option>
+      <option value="#673ab7">Purple</option>
+    </select>
+  </div>
+
+  <div class="event-actions">
+    <button class="save-button" (click)="saveEvent()">Save</button>
+  </div>
+</div>

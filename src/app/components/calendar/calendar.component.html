@@ -1,0 +1,54 @@
+<div class="calendar-container-wrapper">
+    <!-- Formulario a la izquierda -->
+    <div class="event-form-container" *ngIf="showEventForm">
+      <app-event-form (eventCreated)="closeForm()"></app-event-form>
+    </div>
+  
+    <!-- Calendario en el centro -->
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button class="nav-button" (click)="previousMonth()">&lt;</button>
+        <h2>{{ formatMonth(currentMonth) }}</h2>
+        <button class="nav-button" (click)="nextMonth()">&gt;</button>
+      </div>
+      
+      <div class="weekdays">
+        <div class="weekday" *ngFor="let day of weekdays">{{ day }}</div>
+      </div>
+      
+      <div class="calendar">
+        <div 
+          *ngFor="let day of calendar" 
+          class="day" 
+          [class.other-month]="!day.isCurrentMonth"
+          [class.today]="day.isToday"
+          (click)="selectDate(day)"
+        >
+          <div class="day-number">{{ day.date.getDate() }}</div>
+          <div class="events">
+            <div 
+              *ngFor="let event of day.events" 
+              class="event" 
+              [ngClass]="{
+                'blue': event.color === '#4285f4',
+                'red': event.color === '#ea4335',
+                'green': event.color === '#34a853',
+                'yellow': event.color === '#fbbc04',
+                'purple': event.color === '#673ab7'
+              }"
+              (click)="selectEvent(event)"
+            >
+              {{ event.title_event }}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  
+    <!-- Lista de eventos a la derecha -->
+    <div class="event-list-container">
+      <app-event-list [events]="eventsForSelectedDate"></app-event-list>
+    </div>
+  </div>
+  

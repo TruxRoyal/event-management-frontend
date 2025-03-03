@@ -1,0 +1,72 @@
+.event-form-container {
+  max-width: 600px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.event-form-container h3 {
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 20px;
+}
+
+.event-form-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.event-form-group label {
+  font-weight: bold;
+  color: #555;
+}
+
+.event-form-group input,
+.event-form-group textarea,
+.event-form-group select {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.event-form-group textarea {
+  resize: vertical;
+  min-height: 50px;
+}
+
+.event-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.event-actions button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+
+.event-actions .cancel-button {
+  background: #ccc;
+  color: #333;
+}
+
+.event-actions .save-button {
+  background: #673ab7;
+  color: white;
+}
+
+.event-actions .save-button:hover {
+  background: #5e35b1;
+}
+

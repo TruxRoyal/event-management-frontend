@@ -1,1 +1,77 @@
-<p>event-details works!</p>
+<div class="event-card">
+  <div class="event-card-header">
+    <h3 class="event-title">{{ isEditing ? 'Editar Evento' : event.title_event }}</h3>
+  </div>
+
+  <div class="event-card-body">
+    <div *ngIf="!isEditing">
+      <div class="event-info">
+        <div class="event-info-item">
+          <i class="fas fa-calendar-alt"></i>
+          <span><strong>Titulo:</strong> {{ event.title_event }}</span>
+        </div>
+        <div class="event-info-item">
+          <i class="fas fa-calendar-alt"></i>
+          <span><strong>Fecha:</strong> {{ event.date_event }}</span>
+        </div>
+
+        <div class="event-info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span><strong>Ubicación:</strong> {{ event.location_event }}</span>
+        </div>
+
+        <div class="event-info-item">
+          <i class="fas fa-align-left"></i>
+          <span><strong>Descripción:</strong> {{ event.description_event }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isEditing" class="event-form-container">
+      <div class="event-form-group">
+        <label>Título:</label>
+        <input type="text" [(ngModel)]="editedEvent.title_event" placeholder="Título del evento">
+      </div>
+
+      <div class="event-form-group">
+        <label>Fecha:</label>
+        <input type="date" [(ngModel)]="editedEvent.date_event">
+      </div>
+
+      <div class="event-form-group">
+        <label>Ubicación:</label>
+        <input type="text" [(ngModel)]="editedEvent.location_event" placeholder="Ubicación del evento">
+      </div>
+
+      <div class="event-form-group">
+        <label>Descripción:</label>
+        <textarea [(ngModel)]="editedEvent.description_event" placeholder="Descripción del evento"></textarea>
+      </div>
+
+      <div class="event-form-group">
+        <label>Color:</label>
+        <select [(ngModel)]="editedEvent.color">
+          <option value="#4285f4">Blue</option>
+          <option value="#ea4335">Red</option>
+          <option value="#fbbc04">Yellow</option>
+          <option value="#34a853">Green</option>
+          <option value="#673ab7">Purple</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="event-card-footer">
+    <button *ngIf="!isEditing" class="edit-button" (click)="editEvent()">
+      <i class="fas fa-edit"></i> Editar
+    </button>
+    <button *ngIf="!isEditing" class="delete-button" (click)="deleteEvent()">
+      <i class="fas fa-trash"></i> Eliminar
+    </button>
+
+    <div class="event-actions" *ngIf="isEditing">
+      <button class="save-button" (click)="saveEvent()">Guardar</button>
+      <button class="cancel-button" (click)="cancelEdit()"> Cancelar</button>
+    </div>
+  </div>
+</div>

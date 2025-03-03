@@ -1,1 +1,16 @@
-<p>event-list works!</p>
+<div class="events-list">
+  <div 
+    *ngFor="let event of events" 
+    class="event-item" 
+    (click)="selectEvent(event)">
+    <div class="event-item__marker" [style.background-color]="event.color"></div>
+    <div class="event-item__content">
+      <h4 class="event-item__title">{{ event.title_event }}</h4>
+      <p class="event-item__time">📅 {{ event.date_event }}</p>
+      <p class="event-item__location">📍 {{ event.location_event }}</p>
+    </div>
+  </div>
+</div>
+
+<app-event-details *ngIf="selectedEvent !== null" [event]="selectedEvent!" (editEventRequest)="onEditEvent($event)"></app-event-details>
+
